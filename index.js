@@ -12,6 +12,9 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const User = require("./models/user-model");
 
+// 連接靜態檔案
+app.use(express.static("public"));
+
 // 連接到monogodb atlas
 mongoose
   .connect(process.env.DB_CONNECT)
@@ -63,7 +66,7 @@ app.use("/profile", profileRoute);
 // routes
 app.get("/", (req, res) => {
   res.render("index", { user: req.user });
-  console.log(User.find({}));
+  // console.log(User.find({}));
 });
 
 // routes=================================
