@@ -1,10 +1,19 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+
+// 載入css
+app.use(express.static(path.join(__dirname, "public")));
+
+// 取得.env檔案
 const dotenv = require("dotenv");
 dotenv.config();
+
+// 引入router程式碼
 const authRoute = require("./routes/auth-route");
 const profileRoute = require("./routes/profile-route");
+
+//
 require("./config/passport");
 // const cookieSession = require("cookie-session");
 const passport = require("passport");

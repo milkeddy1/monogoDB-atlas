@@ -29,6 +29,7 @@ passport.use(
   })
 );
 
+// google auth
 passport.use(
   "google",
   new GoogleStrategy(

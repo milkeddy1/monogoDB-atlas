@@ -1,7 +1,6 @@
 {
   "name": "monogoatlas",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +20,15 @@
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milkeddy1/monogoDB-atlas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/milkeddy1/monogoDB-atlas/issues"
+  },
+  "homepage": "https://github.com/milkeddy1/monogoDB-atlas#readme",
+  "description": ""
 }
