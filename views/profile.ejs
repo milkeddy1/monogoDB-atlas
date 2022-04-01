@@ -6,18 +6,42 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
-    <h1>This is <%= user.name %>'s profile page</h1>
-    <img src="<%= user.thumbnail %>" />
-    <p><%= user.googleID %></p>
-    <p><%= user.date %></p>
-    <% if (posts.length > 0) { %> <% for (let i = 0; i < posts.length; i++) { %>
-    <div class="card" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title"><%= posts[i].title %></h5>
-        <p class="card-text"><%= posts[i].content %></p>
-        <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
+    <div class="profile">
+      <div class="profile_container">
+        <!-- <div class="profile_bg"></div> -->
+        <div class="profile_posts">
+          <% if (posts.length > 0) { for (let i = 0; i < posts.length; i++) { %>
+          <div class="cards">
+            <div class="card_body">
+              <h3>
+                <p><%= posts[i].title %></p>
+                <div class="post_edit">
+                  <input type="checkbox" id="edit<%= i%>" class="edit_check" />
+                  <label class="three_dots" for="edit<%= i%>">
+                    <div class="dots"></div>
+                    <div class="dots"></div>
+                    <div class="dots"></div>
+                  </label>
+                  <form action="/delete" method="POST" class="trash_container">
+                    <input
+                      class="trash_input"
+                      type="text"
+                      value="<%= posts[i]._id%>"
+                      name="id"
+                    />
+                    <button type="submit">
+                      <img class="trash" src="/images/trash.png" alt="" />
+                    </button>
+                  </form>
+                </div>
+              </h3>
+              <p class="post_content"><%= posts[i].content %></p>
+              <p class="post_date"><%= posts[i].date.slice(0, 15) %></p>
+            </div>
+          </div>
+          <% } } %>
+        </div>
       </div>
     </div>
-    <% } %> <% } %>
   </body>
 </html>

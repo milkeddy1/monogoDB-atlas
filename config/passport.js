@@ -62,11 +62,13 @@ passport.use(
   )
 );
 
+// 將user._id儲存到Session的passport.user
 passport.serializeUser(function (user, done) {
   console.log("Serialized");
   done(null, user._id);
 });
 
+// 從Session抓取passport.user的_id的資料
 passport.deserializeUser(function (_id, done) {
   console.log("Deserialized");
   User.findById({ _id }).then((user) => {

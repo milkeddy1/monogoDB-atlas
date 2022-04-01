@@ -11,7 +11,9 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", authCheck, async (req, res) => {
-  let postFound = await Post.find({ author: req.user._id });
+  // user已從passport.authenticate拿到
+  // posts要從DB拿到所以要使用find
+  let postFound = await Post.find({ author: req.user.name });
   res.render("profile", { user: req.user, posts: postFound });
 });
 
@@ -21,7 +23,11 @@ router.get("/post", authCheck, (req, res) => {
 
 router.post("/post", authCheck, async (req, res) => {
   let { title, content } = req.body;
-  let newPost = new Post({ title, content, author: req.user.id });
+  let newPost = new Post({
+    title,
+    content,
+    author: req.user.name,
+  });
 
   try {
     await newPost.save();
@@ -31,4 +37,5 @@ router.post("/post", authCheck, async (req, res) => {
     res.redirect("/profile/post");
   }
 });
+
 module.exports = router;

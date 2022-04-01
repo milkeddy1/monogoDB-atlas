@@ -6,42 +6,41 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
-    <main style="padding: 3rem">
+    <main>
       <%- include("partials/message") %>
-      <form action="/auth/signup" method="POST">
-        <div class="form-group">
-          <label for="exampleUsername">Username</label>
+      <form
+        class="signup_form"
+        action="/auth/signup"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="signup_username">
+          <label for="exampleUsername">用戶名稱</label>
           <input
             name="name"
             type="text"
-            class="form-control"
             id="exampleUsername"
+            placeholder="Enter username"
             required
           />
-          <small class="form-text text-muted">Enter Full Name here</small>
         </div>
         <br />
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+        <div class="signup_email">
+          <label for="exampleInputEmail1">信箱</label>
           <input
             type="email"
-            class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
             name="email"
             required
           />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
         </div>
         <br />
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+        <div class="signup_password">
+          <label for="exampleInputPassword1">密碼</label>
           <input
             type="password"
-            class="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
             name="password"
@@ -49,7 +48,12 @@
           />
         </div>
         <br />
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="signup_avatar">
+          <label for="avatar">上傳大頭貼</label>
+          <input type="file" id="avatar" name="avatar" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">送出</button>
       </form>
     </main>
   </body>

@@ -1,0 +1,631 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 導覽列
+nav {
+  background-color: #1f1f1f;
+  position: relative;
+  height: 5rem;
+  .nav_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .check_hamburger {
+      display: none;
+    }
+    .mobile_nav {
+      top: 5rem;
+      right: 0;
+      z-index: 5;
+      background-color: #1f1f1f;
+      position: absolute;
+      transition: all 0.3s ease-in;
+      transform: scaleY(0);
+      transform-origin: top;
+      ul {
+        width: 300px;
+        li {
+          list-style: none;
+          a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .check_hamburger:checked ~ .mobile_nav {
+      transform: scaleY(1);
+    }
+    .check_hamburger:checked
+      + .hamburger
+      .hamburger_container
+      span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+    .check_hamburger:checked
+      + .hamburger
+      .hamburger_container
+      span:nth-child(2) {
+      transform: scale(0);
+    }
+    .check_hamburger:checked
+      + .hamburger
+      .hamburger_container
+      span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: -9px;
+    }
+    .hamburger {
+      cursor: pointer;
+      display: none;
+      margin: 1rem;
+      position: absolute;
+      right: 1rem;
+      .hamburger_container {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        top: 0px;
+        span {
+          position: absolute;
+          display: block;
+          width: 25px;
+          height: 2px;
+          background-color: rgb(112, 112, 112);
+          transition: all 0.3s;
+        }
+        span:nth-child(2) {
+          margin-top: 9px;
+        }
+        span:nth-child(3) {
+          margin-top: 18px;
+        }
+      }
+    }
+    .logo {
+      margin: 1rem;
+      color: rgb(125, 125, 125);
+      h1 {
+        margin-bottom: 0;
+        .nav_logo {
+          width: 80px;
+        }
+        a {
+          text-decoration: none;
+          color: rgb(125, 125, 125);
+        }
+      }
+    }
+    .navs {
+      margin: 1rem;
+      display: flex;
+      align-items: center;
+      ul {
+        list-style: none;
+        display: flex;
+        margin-bottom: 0;
+        li {
+          display: flex;
+          align-items: center;
+          margin-left: 1rem;
+          a {
+            color: rgb(125, 125, 125);
+            text-decoration: none;
+          }
+        }
+        .nav_profile {
+          a {
+            display: flex;
+            img {
+              width: 50px;
+              height: 50px;
+            }
+            p {
+              display: flex;
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 個人的posts
+.profile {
+  width: 100vw;
+  // position: relative;
+  .profile_container {
+    width: 50%;
+    margin: auto;
+    background-color: #8d8b8b;
+    border-radius: 1rem;
+    // .profile_bg {
+    //   display: flex;
+    //   margin-top: 1rem;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-image: url("../images/view.jpeg");
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    //   filter: blur(5px);
+    // }
+    .profile_posts {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      border-radius: 30px;
+      margin: auto;
+      margin-top: 1rem;
+      padding: 1rem;
+      h1 {
+        text-align: center;
+      }
+      .cards {
+        flex-grow: 1;
+        border-radius: 10px;
+        background-color: white;
+        margin: 1rem;
+        .card_body {
+          h3 {
+            border-radius: 10px;
+            background-color: #acd5ea;
+            bottom: 0;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            padding-right: 2rem;
+            display: flex;
+            align-items: center;
+            p {
+              flex-grow: 5;
+            }
+            // justify-content: space-between;s
+            .post_edit {
+              position: relative;
+              flex-grow: 1;
+              .three_dots {
+                .dots {
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 5px;
+                  margin: 0.3rem;
+                  background-color: white;
+                }
+              }
+              .three_dots:hover {
+                cursor: pointer;
+              }
+              .three_dots:hover > .dots {
+                background-color: #e5e5e5;
+              }
+              .edit_check {
+                display: none;
+              }
+              .edit_check:checked ~ .trash_container {
+                display: flex;
+              }
+              .trash_container {
+                left: 10px;
+                position: absolute;
+                display: none;
+                justify-content: center;
+                .trash_input {
+                  display: none;
+                }
+                .trash {
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+              .trash_container:hover {
+                background-color: rgb(190, 190, 190);
+                cursor: pointer;
+              }
+            }
+          }
+          .post_content {
+            margin-bottom: 0;
+            padding: 0.5rem;
+            margin: 0.5rem;
+          }
+          .post_date {
+            background-color: #5f9ea0;
+            border-radius: 10px;
+            margin: 0.5rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 首頁的posts
+.posts_wrapper {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  .home_posts {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    margin: 1rem;
+    transform: scale(1);
+    transition: all 0.3s;
+    .posts_user {
+      background-color: aquamarine;
+      border-bottom-left-radius: 7px;
+      border-top-left-radius: 7px;
+      padding: 1rem;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .posts_lists {
+      background-color: rgb(40, 168, 142);
+      border-bottom-right-radius: 7px;
+      border-top-right-radius: 7px;
+      padding: 1rem;
+      transition: all 0.3s;
+      p {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  .home_posts:hover {
+    transform: scale(1.15);
+  }
+  .home_posts:hover > .posts_lists {
+    background-color: rgb(78, 210, 184);
+  }
+}
+
+// 首頁的標題
+.page_title {
+  margin: 1rem;
+  h1 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+// 登入頁面
+.login_main {
+  width: 100vw;
+  height: 40vw;
+  display: flex;
+  align-items: center;
+  .login_wrapper {
+    background-color: #8d8b8b;
+    width: 20%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 20px;
+    .google_login {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      .google_link {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        a {
+          border: 1px solid gray;
+          background-color: white;
+          padding: 0.5rem;
+          text-decoration: none;
+          font-size: 0.75rem;
+        }
+      }
+    }
+    .login_username {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      input {
+        border: none;
+        height: 2rem;
+        padding: 1rem;
+        border-radius: 5px;
+      }
+      input:focus {
+        outline: none;
+      }
+      label {
+        margin-right: 1rem;
+        color: white;
+      }
+    }
+    .login_password {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      input {
+        border: none;
+        height: 2rem;
+        padding: 1rem;
+        border-radius: 5px;
+      }
+      input:focus {
+        outline: none;
+      }
+      label {
+        margin-right: 1rem;
+        color: white;
+      }
+    }
+    .login_button {
+      display: flex;
+      justify-content: center;
+      button {
+        cursor: pointer;
+        background-color: rgb(71, 126, 236);
+        padding: 0;
+        border: none;
+        border-radius: 5px;
+        height: 2rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// 發文form
+.post_form {
+  background-color: #8d8b8b;
+  width: 40%;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-top: 10rem;
+  .post_title {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    input {
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      height: 2rem;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  .post_content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    textarea {
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      height: 10rem;
+    }
+    textarea:focus {
+      outline: none;
+    }
+  }
+  button {
+    border: none;
+    height: 2rem;
+    width: 100%;
+    border-radius: 5px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+}
+
+// 單一post page
+.single_post_wrapper {
+  background-color: #8d8b8b;
+  width: 50vw;
+  margin: auto;
+  margin-top: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  .single_post_top {
+    .single_post_author {
+      display: flex;
+      .single_post_avatar {
+        img {
+          width: 40px;
+          height: 40px;
+          margin-right: 1rem;
+        }
+      }
+      .single_post_user {
+      }
+    }
+    .single_post_content {
+      h2 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  .single_post_bottom {
+    .single_post_comment {
+      h2 {
+      }
+      .comment_section {
+        .comments {
+          border-radius: 10px;
+          background-color: #e0dfdf;
+          margin: 1rem;
+          padding: 1rem;
+          display: flex;
+          .comment_left {
+            display: flex;
+            align-items: center;
+            img {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .comment_right {
+            margin-left: 1rem;
+            .comment_detail {
+              display: flex;
+              p {
+                font-size: 0.75rem;
+              }
+              p:nth-child(2) {
+                margin-left: 1rem;
+                color: #777777;
+              }
+            }
+          }
+        }
+        .comment_input_section {
+          display: flex;
+          .comment_avatar {
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .comment_input {
+            width: 100%;
+            form {
+              display: flex;
+              input {
+                flex-grow: 10;
+                height: 2rem;
+                padding: 1rem;
+                border: none;
+                border-radius: 5px;
+                margin-left: 0.5rem;
+              }
+              input:focus {
+                outline: none;
+              }
+              button {
+                margin-left: 1rem;
+                flex-grow: 1;
+              }
+            }
+          }
+        }
+        .single_post_guest {
+          text-align: center;
+          span {
+            background-color: rgb(217, 217, 217);
+            padding: 0.5rem;
+            border-radius: 5px;
+            a {
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//註冊頁面
+.signup_form {
+  width: 40%;
+  margin: auto;
+  margin-top: 5rem;
+  background-color: #8d8b8b;
+  padding: 2rem;
+  border-radius: 1rem;
+  .signup_username {
+    display: flex;
+    flex-direction: column;
+    input {
+      height: 2rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  .signup_email {
+    display: flex;
+    flex-direction: column;
+    input {
+      height: 2rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  .signup_password {
+    display: flex;
+    flex-direction: column;
+    input {
+      height: 2rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  .signup_avatar {
+    display: flex;
+    flex-direction: column;
+    input {
+      display: none;
+    }
+    label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      height: 2rem;
+      border-radius: 5px;
+    }
+    label:hover {
+      cursor: pointer;
+    }
+  }
+  button {
+    width: 100%;
+    height: 2rem;
+    border: none;
+    border-radius: 5px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    .nav_wrapper {
+      .hamburger {
+        display: block;
+      }
+      .navs {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Single Post</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <div class="single_post_wrapper">
+      <div class="single_post_top">
+        <div class="single_post_author">
+          <div class="single_post_avatar">
+            <img
+              src="<%= postAvatar ? `/images/${postAvatar}` : googlePostAvatar %>"
+              alt=""
+            />
+          </div>
+          <div class="single_post_user">
+            <p><%= author %></p>
+            <p><%= date.slice(0,15) %></p>
+          </div>
+        </div>
+        <div class="single_post_content">
+          <h2><%= content %></h2>
+        </div>
+      </div>
+      <hr />
+      <div class="single_post_bottom">
+        <div class="single_post_comment">
+          <h2>Comments</h2>
+
+          <div class="comment_section">
+            <% comments.map((comment) => {%>
+            <div class="comments">
+              <div class="comment_left">
+                <img
+                  src="<%= comment.avatar ? `/images/${comment.avatar}` : comment.googleAvatar %>"
+                  alt=""
+                />
+              </div>
+              <div class="comment_right">
+                <div class="comment_detail">
+                  <p><%= comment.author %></p>
+                  <p class="comment_date">
+                    <%= comment.date.toString().slice(0,15) %>
+                  </p>
+                </div>
+                <h2 class="comment_content"><%= comment.comment %></h2>
+              </div>
+            </div>
+            <% }) %> <% if(user) { %>
+            <div class="comment_input_section">
+              <div class="comment_avatar">
+                <img
+                  src="<%= avatar ? `/images/${avatar}` : googleAvatar %>"
+                  alt=""
+                />
+              </div>
+              <div class="comment_input">
+                <form action="/singlepost/<%= id %>" method="POST">
+                  <input type="text" name="comment" />
+                  <button type="submit">送出</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% } else {%>
+          <div class="single_post_guest">
+            <span><a href="/auth/signup">Sign up</a></span> to Leave a comment
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

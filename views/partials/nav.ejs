@@ -1,25 +1,70 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+<nav>
+  <div class="nav_wrapper">
+    <div class="logo">
+      <h1>
+        <a href="/"><img class="nav_logo" src="/images/logo.jpeg" alt="" /></a>
+      </h1>
+    </div>
+    <div class="navs">
+      <ul>
         <% if(!user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/login">Login</a>
+        <li>
+          <a href="/auth/login">登入</a>
         </li>
-        <% } %> <% if(!user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">Sign Up</a>
+        <li>
+          <a href="/auth/signup">註冊</a>
         </li>
         <% } %> <% if(user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/logout">Logout</a>
+        <li class="nav_profile">
+          <a href="/">
+            <img
+              class="nav_avatar"
+              src="<%= user.avatar ? `/images/${user.avatar}` : user.thumbnail %> "
+              alt=""
+            />
+            <p><%= user.name || user.googleID %></p>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
+        <li>
+          <a href="/auth/logout">登出</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile/post">New Post</a>
+        <li>
+          <a href="/profile">個人頁面</a>
+        </li>
+        <li>
+          <a href="/profile/post">新增留言</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <input type="checkbox" class="check_hamburger" id="toggler" />
+    <label class="hamburger" for="toggler">
+      <div class="hamburger_container">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </label>
+    <div class="mobile_nav">
+      <ul>
+        <li><a href="/">首頁</a></li>
+        <% if(!user) { %>
+        <li>
+          <a href="/auth/login">登入</a>
+        </li>
+        <% } %> <% if(!user) { %>
+        <li>
+          <a href="/auth/signup">註冊</a>
+        </li>
+        <% } %> <% if(user) { %>
+        <li>
+          <a href="/auth/logout">登出</a>
+        </li>
+        <li>
+          <a href="/profile">個人頁面</a>
+        </li>
+        <li>
+          <a href="/profile/post">新增留言</a>
         </li>
         <% } %>
       </ul>

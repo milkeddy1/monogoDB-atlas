@@ -6,29 +6,24 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
-    <main style="padding: 3rem">
+    <main>
       <%- include ("partials/message") %>
-      <form action="/profile/post" method="POST">
-        <div class="form-group">
+      <form class="post_form" action="/profile/post" method="POST">
+        <div class="post_title">
           <label for="exampleforTitle">Title</label>
-          <input
-            name="title"
-            type="text"
-            class="form-control"
-            id="exampleforTitle"
-          />
+          <input name="title" type="text" id="exampleforTitle" />
         </div>
         <br />
-        <div class="form-group">
+        <div class="post_content">
           <label for="exampleforContent">Content</label>
           <textarea
-            class="form-control"
             id="exampleforContent"
             aria-describedby="emailHelp"
             name="content"
           ></textarea>
+        </div>
         <br />
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit">送出</button>
       </form>
     </main>
   </body>

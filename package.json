@@ -16,12 +16,11 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "mongoose": "^6.2.4",
-    "nodemon": "^2.0.15",
+    "multer": "^1.4.4",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milkeddy1/monogoDB-atlas.git"

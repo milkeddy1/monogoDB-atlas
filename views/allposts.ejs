@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Post</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <main style="padding: 3rem">
+      <%- include ("partials/message") %>
+      <div>
+        <% posts.map((item) => { %>
+        <div>
+          <h3><%= item.title %></h3>
+          <p><%= item.content %></p>
+          <p><%= item.author %></p>
+        </div>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,5 +1,13 @@
 const mongoose = require("mongoose");
 
+// const commentSchema = new mongoose.Schema({
+//   author: String,
+//   comment: String,
+//   date: {
+//     type: String,
+//     default: new Date(),
+//   },
+// });
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -10,10 +18,14 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: new Date(),
   },
   author: String,
+  comments: {
+    type: Array,
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("Post", postSchema);

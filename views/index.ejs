@@ -10,17 +10,32 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">登入系統</h1>
-        <p class="col-md-8 fs-4">
-          (With EJS, MongoDB Atlas, Passport.js, Authentication, OAuth(Google
-          Login Setup) and other examples.)
-        </p>
-        <button class="btn btn-primary btn-lg" type="button">
-          Sign up right now !
-        </button>
-      </div>
+    <div class="page_title">
+      <h1>登入系統</h1>
+      <!-- <p>
+        (With EJS, MongoDB Atlas, Passport.js, Authentication, OAuth(Google
+        Login Setup) and other examples.)
+      </p> -->
+    </div>
+    <div class="posts_wrapper">
+      <% if (posts.length > 0) { for (let i = 0; i < posts.length; i++) { %>
+      <a class="home_posts" href="/singlepost/<%= posts[i]._id %>">
+        <% if (allUsers.length > 0) { for (let j = 0; j < allUsers.length; j++)
+        { %> <% if(posts[i].author === allUsers[j].name) { %>
+        <div class="posts_user">
+          <img
+            src="<%= allUsers[j].avatar ? `/images/${allUsers[j].avatar}`: allUsers[j].thumbnail %>"
+            alt=""
+          />
+          <p><%= posts[i].author %></p>
+        </div>
+        <% } %> <% } } %>
+        <div class="posts_lists">
+          <h3><%= posts[i].title %></h3>
+          <p><%= posts[i].content.substring(0,20) %>...</p>
+        </div>
+      </a>
+      <% } } %>
     </div>
   </body>
 </html>
