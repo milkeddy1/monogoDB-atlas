@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const url = require("url");
-
+const PORT = process.env.PORT || 5000;
 // 取得.env檔案
 const dotenv = require("dotenv");
 dotenv.config();
@@ -173,6 +173,6 @@ app.post("/singlepost/:id", async (req, res) => {
   res.redirect(`/singlepost/${id}`);
 });
 
-app.listen(3000, () => {
-  console.log("Server running in 3000");
+app.listen(PORT, () => {
+  console.log("Server running in " + PORT);
 });
