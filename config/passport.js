@@ -36,7 +36,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/redirect",
+      callbackURL:
+        "https://eddys-login-system.herokuapp.com/auth/google/redirect",
     },
     (accessToken, refreshToken, profile, done) => {
       //   passport callback
