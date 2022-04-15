@@ -88,6 +88,7 @@ app.get("/", async (req, res) => {
 
 app.get("/allposts", async (req, res) => {
   let findPosts = await Post.find({});
+  console.log(await Post.find().find({ author: "user03" }));
   res.render("allposts", { user: req.user, posts: findPosts });
 });
 

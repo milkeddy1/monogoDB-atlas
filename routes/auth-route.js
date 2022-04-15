@@ -3,15 +3,39 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/user-model");
 const multer = require("multer");
+const { GridFsStorage } = require("multer-gridfs-storage");
+const Grid = require("gridfs-stream");
+const mongoose = require("mongoose");
 
-const storage = multer.diskStorage({
-  destination: function (rq, file, cb) {
-    cb(null, "./public/images");
-  },
-  filename: function (rq, file, cb) {
-    cb(null, Date.now() + file.originalname);
+const DB_URL =
+  "mongodb+srv://milkeddy:milkeddy@cluster0.8bqcv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// 連接db
+const conn = mongoose.createConnection(DB_URL);
+
+let gfs;
+let gridfsBucket;
+conn.once("open", () => {
+  gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: "uploads",
+  });
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection("uploads");
+});
+
+const storage = new GridFsStorage({
+  url: DB_URL,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      const filename = "file_" + Date.now();
+      const fileInfo = {
+        filename: filename,
+        bucketName: "uploads",
+      };
+      resolve(fileInfo);
+    });
   },
 });
+
 const upload = multer({
   storage: storage,
 });
@@ -69,7 +93,7 @@ router.post(
 
 // 註冊驗證
 router.post("/signup", upload.single("avatar"), async (req, res) => {
-  console.log(req.file);
+  console.log(req.file, "req file");
   console.log(req.body);
   let { name, email, password } = req.body;
   // 檢查有沒有重複的username
@@ -97,6 +121,14 @@ router.post("/signup", upload.single("avatar"), async (req, res) => {
 router.get("/logout", (req, res) => {
   req.logOut();
   res.redirect("/");
+});
+
+//  圖片url
+router.get("/image/:filename", async (req, res) => {
+  let image = await gfs.files.findOne({ filename: req.params.filename });
+  let readStream = gridfsBucket.openDownloadStream(image._id);
+  readStream.pipe(res);
+  // res.redirect("/");
 });
 
 module.exports = router;

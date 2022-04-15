@@ -19,7 +19,7 @@
           <a href="/">
             <img
               class="nav_avatar"
-              src="<%= user.avatar ? `/images/${user.avatar}` : user.thumbnail %> "
+              src="<%= user.avatar ? `/auth/image/${user.avatar}` : user.thumbnail %> "
               alt=""
             />
             <p><%= user.name || user.googleID %></p>
