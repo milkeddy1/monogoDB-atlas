@@ -11,7 +11,7 @@
         <div class="single_post_author">
           <div class="single_post_avatar">
             <img
-              src="<%= postAvatar ? `/auth/images/${postAvatar}` : googlePostAvatar %>"
+              src="<%= postAvatar ? `/auth/image/${postAvatar}` : googlePostAvatar %>"
               alt=""
             />
           </div>
@@ -34,7 +34,7 @@
             <div class="comments">
               <div class="comment_left">
                 <img
-                  src="<%= comment.avatar ? `/auth/images/${comment.avatar}` : comment.googleAvatar %>"
+                  src="<%= comment.avatar ? `/auth/image/${comment.avatar}` : comment.googleAvatar %>"
                   alt=""
                 />
               </div>
@@ -52,7 +52,7 @@
             <div class="comment_input_section">
               <div class="comment_avatar">
                 <img
-                  src="<%= avatar ? `/auth/images/${avatar}` : googleAvatar %>"
+                  src="<%= avatar ? `/auth/image/${avatar}` : googleAvatar %>"
                   alt=""
                 />
               </div>

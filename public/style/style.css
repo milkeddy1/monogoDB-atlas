@@ -44,11 +44,13 @@ nav .nav_wrapper .mobile_nav {
 }
 
 nav .nav_wrapper .mobile_nav ul {
-  width: 300px;
+  width: 100vw;
 }
 
 nav .nav_wrapper .mobile_nav ul li {
+  padding: 1rem;
   list-style: none;
+  text-align: center;
 }
 
 nav .nav_wrapper .mobile_nav ul li a {
@@ -517,6 +519,13 @@ nav .nav_wrapper .navs ul .nav_profile a p {
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .login_main .login_wrapper {
+    margin-top: 5rem;
+    width: 80%;
+  }
+}
+
 .post_form {
   background-color: #8d8b8b;
   width: 40%;
@@ -791,22 +800,25 @@ nav .nav_wrapper .navs ul .nav_profile a p {
 }
 
 .signup_form .signup_avatar input {
-  display: none;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.signup_form .signup_avatar ::-webkit-file-upload-button {
+  background-color: #cfcfcf;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  padding: 1rem;
+}
+
+.signup_form .signup_avatar ::-webkit-file-upload-button:hover {
+  background-color: #e7e7e7;
+  cursor: pointer;
 }
 
 .signup_form .signup_avatar label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #ffffff;
-  height: 2rem;
-  border-radius: 5px;
+  display: none;
 }
 
 .signup_form .signup_avatar label:hover {
@@ -822,6 +834,12 @@ nav .nav_wrapper .navs ul .nav_profile a p {
 
 .signup_form button:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .signup_form {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 768px) {

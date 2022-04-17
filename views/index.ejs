@@ -24,7 +24,7 @@
         { %> <% if(posts[i].author === allUsers[j].name) { %>
         <div class="posts_user">
           <img
-            src="<%= allUsers[j].avatar ? `/auth/images/${allUsers[j].avatar}`: allUsers[j].thumbnail %>"
+            src="<%= allUsers[j].avatar ? `/auth/image/${allUsers[j].avatar}`: allUsers[j].thumbnail %>"
             alt=""
           />
           <p><%= posts[i].author %></p>

@@ -28,9 +28,11 @@ nav {
       transform: scaleY(0);
       transform-origin: top;
       ul {
-        width: 300px;
+        width: 100vw;
         li {
+          padding: 1rem;
           list-style: none;
+          text-align: center;
           a {
             color: white;
             text-align: center;
@@ -386,6 +388,15 @@ nav {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .login_main {
+    .login_wrapper {
+      margin-top: 5rem;
+      width: 80%;
+    }
+  }
+}
+
 // 發文form
 .post_form {
   background-color: #8d8b8b;
@@ -591,16 +602,24 @@ nav {
   .signup_avatar {
     display: flex;
     flex-direction: column;
+
     input {
-      display: none;
+      border-radius: 10px;
+      background-color: white;
+    }
+    ::-webkit-file-upload-button {
+      background-color: #cfcfcf;
+      border: none;
+      border-radius: 10px;
+      color: black;
+      padding: 1rem;
+    }
+    ::-webkit-file-upload-button:hover {
+      background-color: #e7e7e7;
+      cursor: pointer;
     }
     label {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
-      height: 2rem;
-      border-radius: 5px;
+      display: none;
     }
     label:hover {
       cursor: pointer;
@@ -614,6 +633,12 @@ nav {
   }
   button:hover {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signup_form {
+    width: 80%;
   }
 }
 
