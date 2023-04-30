@@ -32,5 +32,8 @@
     "url": "https://github.com/milkeddy1/monogoDB-atlas/issues"
   },
   "homepage": "https://github.com/milkeddy1/monogoDB-atlas#readme",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "14.x"
+  }
 }
