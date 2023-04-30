@@ -1,0 +1,3 @@
+# Simple log, posts, users register website
+
+Check mongodb is up if website is down...
